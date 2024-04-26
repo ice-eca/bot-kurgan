@@ -2,7 +2,7 @@ import telebot
 from telebot import types
 import re
 
-TOKEN = '7079565713:AAHHKTpUfz-20C8HJUq57x6xT2upEgaZAk4'
+TOKEN = '7198610041:AAE_LzU43U_KSz07v2k7ALtheU9N5sMtIUk'
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -11,7 +11,7 @@ age_regex = re.compile(r'^\d.*')
 city_regex = re.compile(r'^\d.*')
 district_regex = re.compile(r'^\D.*')
 data = {}
-request_chat_id = '-4136722281'
+request_chat_id = '-4164024890'
 
 @bot.message_handler(commands=['start'])
 
@@ -24,7 +24,7 @@ def enter_district(message):
         
     markup.add(itembtn1, itembtn2)
     bot.send_photo(message.chat.id, open('kiber1.png', 'rb'))
-    bot.send_message(message.chat.id, 'Школа программирования для детей KIBERone приветствует вас!\n\nНа летние каникулы мы организуем развлекательно-познавательные смены для детей от 8 до 14 лет,\n5 дней по системе «ВСЁ ВКЛЮЧЕНО» с 6 тематическими сменами на выбор. Что входит:\n\n– обед в ресторане + перекусы\n– разработка собственного IT-проекта (2 часа в день)\n– практика английский языка\n– творчество, VR, командные игры и развлечения\n– правильное окружение и новые друзья\n\nДля бронирования смены укажите Ваш город\U0001F447' , reply_markup=markup)
+    bot.send_message(message.chat.id, 'Школа программирования для детей KIBERone в Кургане приветствует вас!\n\nНа летние каникулы мы организуем развлекательно-познавательные смены для детей от 8 до 14 лет,\n5 дней по системе «ВСЁ ВКЛЮЧЕНО» с 6 тематическими сменами на выбор. Что входит:\n\n– обед в ресторане + перекусы\n– разработка собственного IT-проекта (2 часа в день)\n– практика английский языка\n– творчество, VR, командные игры и развлечения\n– правильное окружение и новые друзья\n\nДля бронирования смены укажите Ваш город\U0001F447' , reply_markup=markup)
     
 def enter_age(message):
     markup = types.InlineKeyboardMarkup()
