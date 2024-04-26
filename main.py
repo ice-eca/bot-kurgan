@@ -19,12 +19,12 @@ def enter_district(message):
     clear_data(message)
     data[message.chat.id] = {'stage':0}
     markup = types.InlineKeyboardMarkup()
-    itembtn1 = types.InlineKeyboardButton(text='Екатеринбург', callback_data='Екатеринбург')
-    itembtn2 = types.InlineKeyboardButton(text='Другой город', callback_data='Другой город')
+    itembtn1 = types.InlineKeyboardButton(text='Каральцква, 105', callback_data='Каральцева, 105')
+    itembtn2 = types.InlineKeyboardButton(text='3 микрорайон, 35', callback_data='3 микрорайон, 35')
         
     markup.add(itembtn1, itembtn2)
     bot.send_photo(message.chat.id, open('kiber1.png', 'rb'))
-    bot.send_message(message.chat.id, 'Школа программирования для детей KIBERone в Кургане приветствует вас!\n\nНа летние каникулы мы организуем развлекательно-познавательные смены для детей от 8 до 14 лет,\n5 дней по системе «ВСЁ ВКЛЮЧЕНО» с 6 тематическими сменами на выбор. Что входит:\n\n– обед в ресторане + перекусы\n– разработка собственного IT-проекта (2 часа в день)\n– практика английский языка\n– творчество, VR, командные игры и развлечения\n– правильное окружение и новые друзья\n\nДля бронирования смены укажите Ваш город\U0001F447' , reply_markup=markup)
+    bot.send_message(message.chat.id, 'Школа программирования для детей KIBERone в Кургане приветствует вас!\n\nНа летние каникулы мы организуем развлекательно-познавательные смены для детей от 8 до 14 лет,\n5 дней по системе «ВСЁ ВКЛЮЧЕНО» с 6 тематическими сменами на выбор. Что входит:\n\n– обед в ресторане + перекусы\n– разработка собственного IT-проекта (2 часа в день)\n– практика английский языка\n– творчество, VR, командные игры и развлечения\n– правильное окружение и новые друзья\n\nДля бронирования смены укажите удобный для Вас адрес\U0001F447' , reply_markup=markup)
     
 def enter_age(message):
     markup = types.InlineKeyboardMarkup()
@@ -59,7 +59,7 @@ def handle_text(message):
 def check_and_send(message):
     if district_regex.match(data[message.chat.id]['district']) and age_regex.match(data[message.chat.id]['age']):
         bot.send_message(message.chat.id, 'Благодарим! Скоро с Вами свяжется наш менеджер и подберёт самую интересную смену для Вашего ребёнка. \n \nДо встречи на летних КИБЕРканикулах!\U0001F60A')
-        bot.send_message(request_chat_id, '\U00002757\U00002757\U00002757 Новый лид\U00002757\U00002757\U00002757'+'\nРайон: ' + data[message.chat.id]['district']+'\nВозраст: '+data[message.chat.id]['age']+'\nТел: '+data[message.chat.id]['phone_number'])
+        bot.send_message(request_chat_id, '\U00002757\U00002757\U00002757 Новый лид\U00002757\U00002757\U00002757'+'\nАдрес: ' + data[message.chat.id]['district']+'\nВозраст: '+data[message.chat.id]['age']+'\nТел: '+data[message.chat.id]['phone_number'])
         clear_data(message)
     else:
         bot.send_message(message.chat.id, 'Неправильно сформированы ответы на вопросы, поробуйте еще раз')
