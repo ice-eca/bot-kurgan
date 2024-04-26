@@ -36,7 +36,6 @@ def enter_age(message):
 def enter_city(message):
     clear_data(message)
     data[message.chat.id] = {'stage':0}
-    #bot.send_photo(message.chat.id, open('kiber1.png', 'rb'))
     bot.send_message(message.chat.id, 'Пожалуйста, введите свое Имя')
 
 def enter_phone_number(message):
@@ -80,9 +79,11 @@ def answering(call):
         if data[call.message.chat.id]['stage'] == 0:
             data[call.message.chat.id]['district'] = call.data
             data[call.message.chat.id]['stage'] = 1
+            enter_city(call.massage)
             enter_age(call.message)
         elif data[call.message.chat.id]['stage'] == 1:
             data[call.message.chat.id]['age'] = call.data
             data[call.message.chat.id]['stage'] = 2
+            enter_city(call.massage)
             enter_phone_number(call.message)
 bot.infinity_polling()
