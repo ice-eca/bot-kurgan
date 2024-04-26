@@ -33,10 +33,6 @@ def enter_age(message):
     markup.add(itembtn1, itembtn2)
     bot.send_message(message.chat.id, 'Пожалуйста, укажите возраст вашего ребенка\U0001F447',reply_markup=markup)
 
-def enter_city(message):
-    clear_data(message)
-    data[message.chat.id] = {'stage':0}
-    bot.send_message(message.chat.id, 'Пожалуйста, введите свое Имя')
 
 def enter_phone_number(message):
     bot.send_message(message.chat.id, 'Спасибо! Остался последний шаг\U0001F60A\n \nПожалуйста, введите номер телефона, по которому мы можем с Вами связаться\U0001F4F1')
@@ -63,7 +59,7 @@ def handle_text(message):
 def check_and_send(message):
     if district_regex.match(data[message.chat.id]['district']) and age_regex.match(data[message.chat.id]['age']):
         bot.send_message(message.chat.id, 'Благодарим! Скоро с Вами свяжется наш менеджер и подберёт самую интересную смену для Вашего ребёнка. \n \nДо встречи на летних КИБЕРканикулах!\U0001F60A')
-        bot.send_message(request_chat_id, '\U00002757\U00002757\U00002757 Новый лид\U00002757\U00002757\U00002757'+'\nАдрес: ' + data[message.chat.id]['district']+'\nВозраст: '+data[message.chat.id]['age']+'\nИмя: '+data[message.chat.id]['city']+'\nТел: '+data[message.chat.id]['phone_number'])
+        bot.send_message(request_chat_id, '\U00002757\U00002757\U00002757 Новый лид\U00002757\U00002757\U00002757'+'\nАдрес: ' + data[message.chat.id]['district']+'\nВозраст: '+data[message.chat.id]['age']+'\nТел: '+data[message.chat.id]['phone_number'])
         clear_data(message)
     else:
         bot.send_message(message.chat.id, 'Неправильно сформированы ответы на вопросы, поробуйте еще раз')
@@ -79,11 +75,9 @@ def answering(call):
         if data[call.message.chat.id]['stage'] == 0:
             data[call.message.chat.id]['district'] = call.data
             data[call.message.chat.id]['stage'] = 1
-            enter_city(call.massage)
             enter_age(call.message)
         elif data[call.message.chat.id]['stage'] == 1:
             data[call.message.chat.id]['age'] = call.data
             data[call.message.chat.id]['stage'] = 2
-            enter_city(call.massage)
             enter_phone_number(call.message)
 bot.infinity_polling()
