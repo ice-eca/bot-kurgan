@@ -19,7 +19,7 @@ def enter_district(message):
     clear_data(message)
     data[message.chat.id] = {'stage':0}
     markup = types.InlineKeyboardMarkup()
-    itembtn1 = types.InlineKeyboardButton(text='Каральцева, 105', callback_data='Каральцева, 105')
+    itembtn1 = types.InlineKeyboardButton(text='Карельцева, 105', callback_data='Карельцева, 105')
     itembtn2 = types.InlineKeyboardButton(text='3 микрорайон, 35', callback_data='Третий микрорайон, 35')
         
     markup.add(itembtn1, itembtn2)
